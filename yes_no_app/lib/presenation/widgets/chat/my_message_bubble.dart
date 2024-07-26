@@ -19,7 +19,7 @@ class MyMessageBubble extends StatelessWidget {
             padding:const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
             child: Text(
               message.text.toString(),
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
             ),
           ),
         ),
