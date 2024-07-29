@@ -8,6 +8,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gif/gif.dart';
 import 'package:intl/intl.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,41 +20,25 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   Widget getWeatherIcon(int code) {
-		switch (code) {
-		  case >= 200 && < 300 :
-		    return Image.asset(
-					'assets/1.png'
-				);
-			case >= 300 && < 400 :
-		    return Image.asset(
-					'assets/2.png'
-				);
-			case >= 500 && < 600 :
-		    return Image.asset(
-					'assets/3.png'
-				);
-			case >= 600 && < 700 :
-		    return Image.asset(
-					'assets/4.png'
-				);
-			case >= 700 && < 800 :
-		    return Image.asset(
-					'assets/5.png'
-				);
-			case == 800 :
-		    return Image.asset(
-					'assets/6.png'
-				);
-			case > 800 && <= 804 :
-		    return Image.asset(
-					'assets/7.png'
-				);
-		  default:
-			return Image.asset(
-				'assets/7.png'
-			);
-		}
-	}
+    switch (code) {
+      case >= 200 && < 300:
+        return Image.asset('assets/1.png');
+      case >= 300 && < 400:
+        return Image.asset('assets/2.png');
+      case >= 500 && < 600:
+        return Image.asset('assets/3.png');
+      case >= 600 && < 700:
+        return Image.asset('assets/4.png');
+      case >= 700 && < 800:
+        return Image.asset('assets/5.png');
+      case == 800:
+        return Image.asset('assets/6.png');
+      case > 800 && <= 804:
+        return Image.asset('assets/8.png');
+      default:
+        return Image.asset('assets/7.png');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Container(
                   height: 300,
                   width: 300,
-                  decoration: const BoxDecoration(color: Colors.orange),
+                  decoration: const BoxDecoration(color: Colors.teal),
                 ),
               ),
               //This is filter for screens with add blur is very amazing this excited
@@ -115,17 +100,20 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Column(
                         children: [
                           Text(
-                            '${state.weather.areaName}',
+                            '${state.weather.country!.toUpperCase()} - ${state.weather.areaName!}',
                             style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w300),
                           ),
                           const SizedBox(height: 8),
-                          const Text(
-                            'Buenos Dias Supremo',
-                            style: TextStyle(
+                          Text(
+                            // ignore: unrelated_type_equality_checks
+                            (state.weather.sunrise! == true)
+                                ? 'Buenos Dias'
+                                : 'Buenas noches',
+                            style: const TextStyle(
                                 color: Colors.white,
-                                fontSize: 25,
+                                fontSize: 30,
                                 fontWeight: FontWeight.bold),
                           ),
                           getWeatherIcon(state.weather.weatherConditionCode!),
@@ -140,7 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           Center(
                             child: Text(
-                              state.weather.weatherMain!.toUpperCase(),
+                              state.weather.weatherDescription!.toUpperCase(),
                               style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 25,
@@ -150,12 +138,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           const SizedBox(height: 5),
                           Center(
                             child: Text(
-                              DateFormat('EEEE dd || ')
+                              DateFormat('EEEE dd ')
                                   .format(state.weather.date!),
                               //'Viernes 26 || 18:42',
                               style: const TextStyle(
                                   color: Colors.white,
-                                  fontSize: 18,
+                                  fontSize: 20,
                                   fontWeight: FontWeight.w500),
                             ),
                           ),
@@ -172,7 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       const Text(
-                                        'Sol',
+                                        'Amanecera a las:',
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontWeight: FontWeight.w300),
@@ -200,7 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       const Text(
-                                        'Moon',
+                                        'Anochecera a las:',
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontWeight: FontWeight.w300),
@@ -264,7 +252,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       const Text(
-                                        'Temp min',
+                                        'Temp min        ',
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontWeight: FontWeight.w300),
@@ -280,8 +268,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                 ],
                               ),
+                              
                             ],
+                            
                           ),
+                            const Padding(
+                            padding: EdgeInsets.symmetric(vertical: 5.0),
+                            child: Divider(
+                              color: Colors.grey,
+                            ),
+                          ),
+                             
+
                         ],
                       ),
                     );
