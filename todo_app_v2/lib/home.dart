@@ -81,12 +81,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: TextButton(
                         onPressed: () {
                           addTodo(
+                            
                             Todo(
                                 title: controller1.text,
-                                subtitle: controller2.text),
+                                subtitle: controller2.text
+                                ),
                           );
                           controller1.text = '';
                           controller2.text = '';
+                          
                           Navigator.pop(context);
                         },
                         style: TextButton.styleFrom(
