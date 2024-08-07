@@ -2,12 +2,12 @@
   "project_info": {
     "project_number": "260465546515",
     "project_id": "kangreburges-delivery",
-    "storage_bucket": "kangreburges-delivery.appspot.com"
+    "storage_bucket": ""
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:260465546515:android:75a5ff2f97e6a624c936e6",
+        "mobilesdk_app_id": "",
         "android_client_info": {
           "package_name": "com.example.clean_kraft_flutter"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAMWf_TOl4LA8vh48OcOA-QDgRMpITwwIM"
+          "current_key": ""
         }
       ],
       "services": {
