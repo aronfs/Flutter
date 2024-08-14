@@ -35,7 +35,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 			listener: (context, state) {
 				if(state is SignUpSuccess) {
 					setState(() {
-					  signUpRequired = false;
+					  signUpRequired = true;
 					});
 				} else if(state is SignUpLoading) {
 					setState(() {

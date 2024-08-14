@@ -27,6 +27,7 @@ class FirebaseUserRepo implements UserRepository {
     try {
       await _firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
+          
     } catch (e) {
       
       rethrow;

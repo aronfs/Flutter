@@ -30,7 +30,7 @@ class _SignInScreenState extends State<SignInScreen> {
 			listener: (context, state) {
 				if(state is SignInSuccess) {
 					setState(() {
-					  signInRequired = false;
+					  signInRequired = true;
 					});
 				} else if(state is SignInLoading) {
 					setState(() {
@@ -38,7 +38,7 @@ class _SignInScreenState extends State<SignInScreen> {
 					});
 				} else if(state is SignInFailure) {
 					setState(() {
-					  signInRequired = false;
+					  signInRequired = true;
 						_errorMsg = 'Email o Contraseña Invalida';
 					});
 				}
